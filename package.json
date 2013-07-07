@@ -1,20 +1,22 @@
 {
-    "author": "Peter Ajtai",
-    "name": "jsToolChain",
-    "description": "A slideshow about the JavaScript tool chain used at SOLID",
-    "version": "0.0.1",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/pajtai/jsToolChain.git"
-    },
-    "engines": {
-        "node": "~0.8.0"
-    },
-    "dependencies": {
-    },
-    "devDependencies": {
-        "grunt": "~0.4.1",
-        "matchdep": "~0.1.2",
-        "grunt-reveal-jade":"git://github.com/pajtai/grunt-reveal-jade.git#master"
-    }
+  "author": "Peter Ajtai",
+  "name": "jsToolChain",
+  "description": "A slideshow about the JavaScript tool chain used at SOLID",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pajtai/jsToolChain.git"
+  },
+  "engines": {
+    "node": "~0.8.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "matchdep": "~0.1.2",
+    "grunt-reveal-jade": "git://github.com/pajtai/grunt-reveal-jade.git#master",
+    "grunt-open": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-contrib-connect": "~0.3.0"
+  }
 }

@@ -12,10 +12,42 @@ module.exports = function(grunt) {
         reveal: {
 
             livereload: {
-                slides:"test/slides.jade"
+                options: {
+                    //theme: "simple"
+                }
+            }
+        },
+
+        watch: {
+            options: {
+                // Start a live reload server on the default port: 35729
+                livereload: true,
+                // We have to keep the same context
+                nospawn: true
+            },
+            jade: {
+                files: ['slides/*.jade', 'Gruntfile.js'],
+                tasks: ["reveal-createBuild", "reveal-deleteTemp"]
+            }
+        },
+
+        connect: {
+            livereload : {
+                options : {
+                    port       : 9001,
+                    hostname: 'localhost',
+                    base       : './build'
+                }
+            }
+        },
+
+        open : {
+            reload : {
+                path : 'http://localhost:9001/'
             }
         }
+
     });
 
-    grunt.registerTask("server", "Build and watch task", ["reveal:livereload"]);
+    grunt.registerTask("server", "Build and watch task", ["reveal:livereload", "connect", "open", "watch"]);
 };
