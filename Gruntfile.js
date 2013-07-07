@@ -13,6 +13,7 @@ module.exports = function(grunt) {
 
             livereload: {
                 options: {
+                    livereload: true,
                     //theme: "simple"
                 }
             }
@@ -21,13 +22,19 @@ module.exports = function(grunt) {
         watch: {
             options: {
                 // Start a live reload server on the default port: 35729
-                livereload: true,
-                // We have to keep the same context
-                nospawn: true
+                livereload: true
             },
             jade: {
-                files: ['slides/*.jade', 'Gruntfile.js'],
+                options: {
+                    // We have to keep the same context
+                    nospawn: true
+                },
+                files: ['slides/*.jade'],
                 tasks: ["reveal-createBuild", "reveal-deleteTemp"]
+            },
+            gruntfile: {
+                files: ['Gruntfile.js'],
+                tasks: ['refresh']
             }
         },
 
@@ -50,4 +57,5 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask("server", "Build and watch task", ["reveal:livereload", "connect", "open", "watch"]);
+    grunt.registerTask("refresh", "Build and watch task", ["reveal:livereload", "open"]);
 };
