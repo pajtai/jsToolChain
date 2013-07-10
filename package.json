@@ -17,6 +17,7 @@
     "grunt-reveal-jade": "git://github.com/pajtai/grunt-reveal-jade.git#master",
     "grunt-open": "~0.2.0",
     "grunt-contrib-watch": "~0.4.4",
-    "grunt-contrib-connect": "~0.3.0"
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-livereload": "git://github.com/pajtai/grunt-contrib-livereload.git#multi-write"
   }
 }

@@ -1,7 +1,13 @@
-/*global module:false*/
+/*global module:false, require:false*/
 module.exports = function(grunt) {
 
     "use strict";
+
+    var path = require('path'),
+        lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet,
+        folderMount = function folderMount(connect, point) {
+            return connect.static(path.resolve(point));
+        };
 
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -13,8 +19,7 @@ module.exports = function(grunt) {
 
             livereload: {
                 options: {
-                    livereload: true,
-                    //theme: "simple"
+                    livereload: true
                 }
             }
         },
@@ -22,19 +27,16 @@ module.exports = function(grunt) {
         watch: {
             options: {
                 // Start a live reload server on the default port: 35729
-                livereload: true
+                livereload: true,
+                nospawn: true
             },
             jade: {
-                options: {
-                    // We have to keep the same context
-                    nospawn: true
-                },
                 files: ['slides/*.jade'],
                 tasks: ["reveal-createBuild", "reveal-deleteTemp"]
             },
             gruntfile: {
                 files: ['Gruntfile.js'],
-                tasks: ['refresh']
+                tasks: ["reveal:livereload", "open"]
             }
         },
 
@@ -43,7 +45,10 @@ module.exports = function(grunt) {
                 options : {
                     port       : 9001,
                     hostname: 'localhost',
-                    base       : './build'
+                    base       : './build',
+                    middleware : function (connect, options) {
+                        return [lrSnippet, folderMount(connect, options.base)]
+                    }
                 }
             }
         },
