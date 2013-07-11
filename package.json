@@ -1,25 +1,37 @@
 {
-  "author": "Peter Ajtai",
-  "name": "jsToolChain",
-  "description": "A slideshow about the JavaScript tool chain used at SOLID",
-  "version": "0.0.1",
+  "name": "ToolChain",
+  "description": "A description of the SOLID JavaScript tool chain",
+  "version": "0.0.2",
+  "homepage": "https://github.com/pajtai/jsToolChain",
+  "author": {
+    "name": "Peter Ajtai",
+    "email": "peter.ajtai@thinksolid.com",
+    "url": "http://netlumination.com"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/pajtai/jsToolChain.git"
   },
-  "engines": {
-    "node": "~0.8.0"
+  "bugs": {
+    "url": "https://github.com/pajtai/jsToolChain/issues"
   },
-  "dependencies": {},
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/pajtai/jsToolChain/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.19"
+  },
   "devDependencies": {
-    "grunt": "~0.4.1",
     "matchdep": "~0.1.2",
-    "grunt-reveal-jade": "~0.0.1",
+    "grunt-reveal-jade": "~0.0.3",
     "grunt-open": "~0.2.0",
     "grunt-contrib-watch": "~0.4.4",
     "grunt-contrib-connect": "~0.3.0",
     "grunt-contrib-livereload": "~0.1.2",
-    "grunt-shell": "~0.2.2",
-    "grunt-build-gh-pages": "0.0.4"
-  }
+    "grunt-build-gh-pages": "~0.0.4"
+  },
+  "keywords": []
 }

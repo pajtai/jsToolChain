@@ -17,9 +17,24 @@ module.exports = function(grunt) {
 
         reveal: {
 
-            livereload: {
+            slideshow: {
                 options: {
-                    livereload: true
+                    slides: "slides",
+                    build: "build",
+                    temp: "temp",
+                    assets: "assets",
+                    cleanBuild: true,
+                    title: "SOLID JavaScript Tool Chain",
+                    description: "A description of the SOLID JavaScript tool chain",
+                    author: "Peter Ajtai",
+                    theme: "default",
+                    syntax: "zenburn",
+                    controls: true,
+                    progress: true,
+                    history: true,
+                    center: true,
+                    // default/cube/page/concave/zoom/linear/none
+                    transition: "default"
                 }
             }
         },
@@ -27,16 +42,15 @@ module.exports = function(grunt) {
         watch: {
             options: {
                 // Start a live reload server on the default port: 35729
-                livereload: true,
-                nospawn: true
+                livereload: true
             },
             jade: {
                 files: ['slides/*.jade'],
-                tasks: ["reveal-createBuild", "reveal-deleteTemp"]
+                tasks: ["reveal:slideshow"]
             },
             gruntfile: {
                 files: ['Gruntfile.js'],
-                tasks: ["reveal:livereload", "open"]
+                tasks: ["reveal:slideshow", "open"]
             }
         },
 
@@ -57,10 +71,28 @@ module.exports = function(grunt) {
             reload : {
                 path : 'http://localhost:9001/'
             }
+        },
+
+        build_gh_pages: {
+            ghPages: {
+                options: {
+                    build_branch: "",
+                    dist: "build",
+                }
+            }
         }
 
     });
 
-    grunt.registerTask("server", "Build and watch task", ["reveal:livereload", "connect", "open", "watch"]);
-    grunt.registerTask("refresh", "Build and watch task", ["reveal:livereload", "open"]);
+    // To start editing your slideshow using livereload, run "grunt server"
+    grunt.registerTask("server", "Build and watch task", ["reveal:slideshow", "connect", "open", "watch"]);
+
+    // To create a build without livereload, run "grunt build"
+    grunt.registerTask("build", "Build task", ["reveal:slideshow"]);
+
+    // This task is for internal use with watch
+    grunt.registerTask("refresh", "Build and watch task", ["reveal:slideshow", "open"]);
+
+    // To deploy your slideshow to gh-pages, run "grunt deploy"
+    grunt.registerTask("deploy", "Deploy to gh-pages", ["build_gh_pages:ghPages"]);
 };
