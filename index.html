@@ -33,10 +33,17 @@
 	<body>
 
 		<div class="reveal">
-            <div class="slides"><section><h1>Slideshow</h1><img src="assets/logo.gif" alt="logo"/></section><section><h2>Title</h2><pre class="fragment"><code data-trim="data-trim" contenteditable="contenteditable">$.when(that(), other())
-    .done(okay)
-    .fail(notOkay);
-    </code></pre></section><section><h2>The End</h2></section>    </div>
+            <div class="slides"><section><h1>The SOLID JavaScript Tool Chain</h1><h3>by Peter Ajtai - Lead Developer</h3><a href="http://thinksolid.com"><img src="assets/logo.gif" alt="logo"/></a></section><section><h3>Things to help you create a maintainable, testable, reusable, and fun to work on application.</h3></section><section><h3>The Pieces:</h3><ul><li class="fragment">Dependency Management<ul><li>AMD with RequireJS</li></ul></li><li class="fragment">Responsibilities and Communication<ul><li>MV* & PubSub with Backbone</li></ul></li><li class="fragment">Templating<ul><li>Frontend - Underscore</li><li>Backend - Jade</li></ul></li><li class="fragment">CSS management<ul><li>SASS / Compass</li></ul></li><li class="fragment">Testing<ul><li>Jasmine</li></ul></li><li class="fragment">DOM interaction and promises<ul><li>jQuery</li></ul></li><li class="fragment">Build management<ul><li>Grunt</li></ul></li></ul></section><section><h3>Organizing the code</h3><ul><li class="fragment">Code is chunked into bite sized modules using RequireJS</li><li class="fragment">Each module is separate file<ul><li>Easy code reuse</li><li>Can help in testability if done right</li><li>Have to keep less in your head at once</li></ul></li><li class="fragment">RequireJS has an optimizer (rjs) that can compile all your modules into one
+file for production
+</li></ul></section><section><h3>Organizing the code - responsibilities</h3><ul><li class="fragment">MVC / MVWhatever<ul><li>Model - Data</li><li>View - Filtered presentation of data</li><li>Controller - User interaction / glue</li></ul></li></ul></section><section><h3>Organizing the code - Backbone</h3><ul><li class="fragment">Very flexible</li><li class="fragment">Has a good pub/sub implementation<ul><li>Listen to models</li><li>Create channels to use as event buses<pre class="fragment"><code data-trim="data-trim" contenteditable="contenteditable">// Create arbitrary channels
+var channels = { oneChannel: {}, otherChannel: {} };
+
+// Mix in events
+_.forEach(channels, function(aChannel) {
+    _.extend(app.channels[aChannel],
+        Backbone.Events);
+}
+</code></pre></li></ul></li></ul></section><section><h3>Organizing the code - Backbone</h3><ul><li class="fragment">Since Backbone is so bare bones, there is a lot of boiler plate</li><li class="fragment">Can write your own time savers or use things like Marionette</li></ul></section><section></section>    </div>
 </div>
 
 <script src="lib/js/head.min.js"></script>
