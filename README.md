@@ -2,6 +2,8 @@
 
 Description of the SOLID JavaScript Tool Chain
 
+http://pajtai.github.io/jsToolChain
+
 ## Getting Started
 Install the needed modules with: `npm install`
 
