@@ -1,14 +1,84 @@
 section
-    h1 Slideshow
-    img(src="assets/logo.gif", alt="logo")
+    h1 The SOLID JavaScript Tool Chain
+    h3 by Peter Ajtai - Lead Developer
+    a(href="http://thinksolid.com")
+        img(src="assets/logo.gif", alt="logo")
 
 section
-    h2 Title
-    pre.fragment
-        code(data-trim, contenteditable).
-            $.when(that(), other())
-                .done(okay)
-                .fail(notOkay);
+    h3 Things to help you create a maintainable, testable, reusable, and fun to work on application.
 
 section
-    h2 The End
+    h3 The Pieces:
+    ul
+        li.fragment Dependency Management
+            ul
+                li AMD with RequireJS
+        li.fragment Responsibilities and Communication
+            ul
+                li MV* & PubSub with Backbone
+        li.fragment Templating
+            ul
+                li Frontend - Underscore
+                li Backend - Jade
+        li.fragment CSS management
+            ul
+                li SASS / Compass
+        li.fragment Testing
+            ul
+                li Jasmine
+        li.fragment DOM interaction and promises
+            ul
+                li jQuery
+        li.fragment Build management
+            ul
+                li Grunt
+
+section
+    h3 Organizing the code
+    ul
+        li.fragment Code is chunked into bite sized modules using RequireJS
+        li.fragment Each module is separate file
+            ul
+                li Easy code reuse
+                li Can help in testability if done right
+                li Have to keep less in your head at once
+        li.fragment.
+            RequireJS has an optimizer (rjs) that can compile all your modules into one
+            file for production
+
+section
+    h3 Organizing the code - responsibilities
+    ul
+        li.fragment MVC / MVWhatever
+            ul
+                li Model - Data
+                li View - Filtered presentation of data
+                li Controller - User interaction / glue
+
+section
+    h3 Organizing the code - Backbone
+    ul
+        li.fragment Very flexible
+        li.fragment Has a good pub/sub implementation
+            ul
+                li Listen to models
+                li Create channels to use as event buses
+                    pre.fragment
+                        code(data-trim, contenteditable).
+                            // Create arbitrary channels
+                            var channels = { oneChannel: {}, otherChannel: {} };
+
+                            // Mix in events
+                            _.forEach(channels, function(aChannel) {
+                                _.extend(app.channels[aChannel],
+                                    Backbone.Events);
+                            }
+
+section
+    h3 Organizing the code - Backbone
+    ul
+        li.fragment Since Backbone is so bare bones, there is a lot of boiler plate
+        li.fragment Can write your own time savers or use things like Marionette
+
+section
+    
